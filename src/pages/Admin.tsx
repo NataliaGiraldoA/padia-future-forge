@@ -60,6 +60,14 @@ const MembersAdmin: React.FC = () => {
                 onChange={(e) => handleChange(m.id, "photo", e.target.value)}
               />
             </div>
+            <div>
+              <Label htmlFor={`desc-member-${m.id}`}>Descripción / Bio (líderes)</Label>
+              <Textarea
+                id={`desc-member-${m.id}`}
+                value={local.description || ""}
+                onChange={(e) => handleChange(m.id, "description", e.target.value)}
+              />
+            </div>
             <div className="flex justify-end gap-2">
               {dirty && (
                 <Button variant="default" onClick={() => handleSave(m.id)}>
@@ -173,6 +181,7 @@ const ProjectsAdmin: React.FC = () => {
 
 const Admin: React.FC = () => {
   const [authed, setAuthed] = useState(false);
+  const { saveStatus } = useAdmin();
   useEffect(() => {
     if (localStorage.getItem("padia_admin_auth") === "1") setAuthed(true);
   }, []);
@@ -183,7 +192,18 @@ const Admin: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background p-8">
-      <h1 className="text-3xl font-bold mb-6">Panel de administración</h1>
+      <div className="w-full max-w-2xl mx-auto mb-6 flex flex-wrap items-center justify-between gap-3">
+        <h1 className="text-3xl font-bold">Panel de administración</h1>
+        <span className="font-mono text-xs px-3 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-700">
+          {saveStatus === "saving"
+            ? "Guardando en src/data/padiaContent.json..."
+            : saveStatus === "saved"
+              ? "✓ Guardado en código (src/data/padiaContent.json)"
+              : saveStatus === "error"
+                ? "Modo solo lectura (ejecuta npm run dev para escribir en disco)"
+                : "Fuente: src/data/padiaContent.json"}
+        </span>
+      </div>
       <Accordion type="multiple" className="w-full max-w-2xl mx-auto">
         <AccordionItem value="integrantes">
           <AccordionTrigger>Integrantes del Semillero</AccordionTrigger>

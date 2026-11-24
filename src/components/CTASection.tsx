@@ -1,49 +1,47 @@
-import { Button } from '@/components/ui/button';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import isotipo from '../icon.png';
+import { SpotlightCard } from './SpotlightCard';
 
-export const CTASection = () => {
-  return (
-    <section className="pt-24 pb-0 px-4 relative overflow-hidden">
-      {/* Background curve and glow */}
-      <div className="absolute inset-0">
-        <svg
-          className="absolute bottom-0 left-0 w-full"
-          viewBox="0 0 1440 200"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 200L60 186.7C120 173 240 147 360 133.3C480 120 600 120 720 133.3C840 147 960 173 1080 180C1200 187 1320 173 1380 166.7L1440 160V200H1380C1320 200 1200 200 1080 200C960 200 840 200 720 200C600 200 480 200 360 200C240 200 120 200 60 200H0Z"
-            fill="url(#curveGradient)"
-            fillOpacity="0.1"
-          />
-          <defs>
-            <linearGradient id="curveGradient" x1="0" y1="0" x2="1440" y2="0">
-              <stop stopColor="hsl(25, 95%, 53%)" />
-              <stop offset="1" stopColor="hsl(35, 90%, 55%)" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+export const CTASection = () => (
+  <section className="w-full pt-8">
+    <SpotlightCard
+      as="div"
+      className="relative w-full overflow-hidden border-y border-padia-orange/25 bg-gradient-to-b from-white via-[#FFF9F5] to-[#F3F3F1] px-6 py-16 text-center shadow-[0_20px_50px_-15px_rgba(255,107,0,0.1)] backdrop-blur-xl sm:px-12 sm:py-20 lg:px-20 lg:py-24"
+    >
+      {/* Filo de luz superior */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-padia-orange/70 to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-0 h-56 w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-padia-orange/12 blur-3xl"
+      />
 
-      {/* Glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-padia-orange/10 rounded-full blur-3xl" />
+      <div className="page-container relative">
+        <img
+          src={isotipo}
+          alt=""
+          aria-hidden="true"
+          className="relative mx-auto mb-6 h-12 w-12 select-none"
+        />
 
-      <div className="max-w-4xl mx-auto text-center relative">
-        {/* Icon eliminado por solicitud */}
+        <div className="relative mb-5">
+          <span className="tech-badge">
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-pulse" />
+            Semillero PADIA · USB Cali
+          </span>
+        </div>
 
-        {/* Heading */}
-        <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
-          Construyamos el <span className="gradient-text glow-text">futuro</span> juntos
+        <h2 className="relative mx-auto w-full pb-2 text-4xl tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.06]">
+          <span className="font-light text-slate-700">Construyamos el </span>
+          <span className="font-extrabold editorial-gradient-text">futuro juntos</span>
         </h2>
 
-        <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-          Únete a nuestra comunidad de innovadores y forma parte del semillero que está 
-          transformando la tecnología en la Universidad San Buenaventura Cali.
+        <p className="relative mx-auto mt-5 max-w-4xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+          Únete a nuestra comunidad de innovadores y forma parte del semillero que está transformando la tecnología
+          en la Universidad San Buenaventura Cali.
         </p>
-
-        {/* CTA Buttons eliminados por solicitud */}
       </div>
-    </section>
-  );
-};
+    </SpotlightCard>
+  </section>
+);

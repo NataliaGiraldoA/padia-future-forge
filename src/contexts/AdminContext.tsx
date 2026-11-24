@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
+import initialContent from "@/data/padiaContent.json";
 
 export interface Member {
   id: string;
@@ -6,6 +7,7 @@ export interface Member {
   linkedin?: string;
   photo?: string;
   role?: string;
+  description?: string;
 }
 
 export interface Project {
@@ -18,9 +20,12 @@ export interface Project {
   githubLink?: string;
 }
 
+export type SaveStatus = "idle" | "saving" | "saved" | "error";
+
 interface AdminContextType {
   members: Member[];
   projects: Project[];
+  saveStatus: SaveStatus;
   addMember: () => void;
   updateMember: (id: string, changes: Partial<Member>) => void;
   deleteMember: (id: string) => void;
@@ -31,125 +36,96 @@ interface AdminContextType {
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
-// default data copied from the hardcoded sections
-const defaultMembers: Member[] = [
-  { id: crypto.randomUUID(), name: "Giovanny Hidalgo Suarez", role: "Director", linkedin: "https://www.linkedin.com/in/giovanny-hidalgo-suarez-95711b1a5/" },
-  { id: crypto.randomUUID(), name: "Mariana Cruz", role: "Lider célula 1", linkedin: "https://www.linkedin.com/in/mariana-cruz-53a8531b0/" },
-  { id: crypto.randomUUID(), name: "Sofia Valencia", role: "Lider célula 2", linkedin: "https://www.linkedin.com/in/sofia-valencia-solano-66022a345/" },
-  { id: crypto.randomUUID(), name: "Lilian Estefania Maradiago Correa", linkedin: "https://www.linkedin.com/in/lilian-estefania-maradiago-correa-40b423244/" },
-  { id: crypto.randomUUID(), name: "Valeria Rudas Ruiz", linkedin: "https://www.linkedin.com/in/valeria-rudas-ruiz-941a0715b/" },
-  { id: crypto.randomUUID(), name: "Juan Sebastián Dosman Bastidas", linkedin: "https://www.linkedin.com/in/sebastiandosman/" },
-  { id: crypto.randomUUID(), name: "Gustavo Adolfo Camargo Pineda", linkedin: "https://www.linkedin.com/in/gustavoadolfocamargopineda/" },
-  { id: crypto.randomUUID(), name: "Dillan Alexander Asprilla Sánchez", linkedin: "https://www.linkedin.com/in/dillanasprilla/" },
-  { id: crypto.randomUUID(), name: "Carlos Andrés Serrato Echeverry", linkedin: "https://www.linkedin.com/in/carlos-andres-serrato-echeverry/" },
-  { id: crypto.randomUUID(), name: "Nicolas Ramirez Villota", linkedin: "https://www.linkedin.com/in/nicolasdlp/" },
-  { id: crypto.randomUUID(), name: "Juan David Díaz Cerón", linkedin: "https://www.linkedin.com/in/juan-david-díaz-cerón-272416265/" },
-  { id: crypto.randomUUID(), name: "Jhonatan Andrés Ortega Caicedo" },
-  { id: crypto.randomUUID(), name: "Valerie Sofia Olave Pineda", linkedin: "https://www.linkedin.com/in/valerie-olave-3a1929350/" },
-  { id: crypto.randomUUID(), name: "Natalia Giraldo Amador", linkedin: "https://www.linkedin.com/in/natalia-giraldo-432076256/" },
-  { id: crypto.randomUUID(), name: "Sofia Moreno Quintero", linkedin: "https://www.linkedin.com/in/sofia-moreno-3a3249272/" },
-  { id: crypto.randomUUID(), name: "Juan Pablo Bustamante Bermúdez", linkedin: "https://www.linkedin.com/in/jpbustamanteb/" },
-  { id: crypto.randomUUID(), name: "Kevin Alexis López Camacho", linkedin: "https://www.linkedin.com/in/kevin-lópez-7a19b8369/" },
-  { id: crypto.randomUUID(), name: "Bylen Yesid Naspiran Realpe", linkedin: "https://www.linkedin.com/in/bylenyesidnaspiranrealpe/" },
-  { id: crypto.randomUUID(), name: "Maria José Ramirez Montero", linkedin: "https://www.linkedin.com/in/maria-jose-ramirez-montero-8b45052b3/" },
-  { id: crypto.randomUUID(), name: "Nicolas Hernandez Rodriguez" },
-  { id: crypto.randomUUID(), name: "Samuel Vargas Valderruten" },
-  { id: crypto.randomUUID(), name: "Fernanda Elizabeth Muñoz Cháves" },
-  { id: crypto.randomUUID(), name: "Valeria Becerra Rendón" },
-  { id: crypto.randomUUID(), name: "Samuel Mejia Chavarriaga" },
-  { id: crypto.randomUUID(), name: "Sofía Acosta Escobar" },
-];
-
-const defaultProjects: Project[] = [
-  {
-    id: crypto.randomUUID(),
-    title: 'Sistema de Predicciónes',
-    description: 'Modelo de machine learning para predicción de deserción estudiantil utilizando técnicas avanzadas de IA.',
-    technologies: ['Python', 'TensorFlow', 'Pandas'],
-    status: 'En desarrollo',
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Dashboard Analítico',
-    description: 'Plataforma de visualización de datos académicos en tiempo real para la toma de decisiones.',
-    technologies: ['React', 'D3.js', 'Node.js'],
-    status: 'Completado',
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Chatbot Universitario',
-    description: 'Asistente virtual con procesamiento de lenguaje natural para consultas académicas.',
-    technologies: ['Python', 'NLP', 'FastAPI'],
-    status: 'En desarrollo',
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'Análisis de Sentimientos',
-    description: 'Herramienta de análisis de opiniones en redes sociales usando deep learning.',
-    technologies: ['Python', 'BERT', 'PyTorch'],
-    status: 'Investigación',
-  },
-];
-
 export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [members, setMembers] = useState<Member[]>([]);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [members, setMembers] = useState<Member[]>(
+    () => (initialContent.members as Member[]) ?? [],
+  );
+  const [projects, setProjects] = useState<Project[]>(
+    () => (initialContent.projects as Project[]) ?? [],
+  );
+  const [saveStatus, setSaveStatus] = useState<SaveStatus>("idle");
 
-  // load from localStorage or fallback to defaults
+  // Limpia cualquier dato viejo de localStorage para que la única fuente de verdad sea el código (`src/data/padiaContent.json`)
   useEffect(() => {
     try {
-      const m = localStorage.getItem('admin_members');
-      if (m) {
-        setMembers(JSON.parse(m));
-      } else {
-        setMembers(defaultMembers);
-      }
+      localStorage.removeItem("admin_members");
+      localStorage.removeItem("admin_projects");
+      localStorage.removeItem("padia_migration_karly_v1");
+      localStorage.removeItem("padia_migration_real_projects_v1");
+      localStorage.removeItem("padia_migration_live_projects_v2");
     } catch {
-      setMembers(defaultMembers);
-    }
-
-    try {
-      const p = localStorage.getItem('admin_projects');
-      if (p) {
-        setProjects(JSON.parse(p));
-      } else {
-        setProjects(defaultProjects);
-      }
-    } catch {
-      setProjects(defaultProjects);
+      // ignore storage errors
     }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('admin_members', JSON.stringify(members));
-  }, [members]);
-
-  useEffect(() => {
-    localStorage.setItem('admin_projects', JSON.stringify(projects));
-  }, [projects]);
+  // Persiste directamente en `src/data/padiaContent.json` a través del endpoint del servidor
+  const persistToCode = useCallback(async (nextMembers: Member[], nextProjects: Project[]) => {
+    setSaveStatus("saving");
+    try {
+      const res = await fetch("/api/admin-content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ members: nextMembers, projects: nextProjects }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setSaveStatus("saved");
+    } catch {
+      setSaveStatus("error");
+    }
+  }, []);
 
   const addMember = () => {
-    setMembers((prev) => [...prev, { id: crypto.randomUUID(), name: '', role: '', linkedin: '', photo: '' }]);
+    setMembers((prev) => {
+      const next = [
+        ...prev,
+        { id: crypto.randomUUID(), name: "", role: "", linkedin: "", photo: "", description: "" },
+      ];
+      void persistToCode(next, projects);
+      return next;
+    });
   };
 
   const updateMember = (id: string, changes: Partial<Member>) => {
-    setMembers((prev) => prev.map((m) => (m.id === id ? { ...m, ...changes } : m)));
+    setMembers((prev) => {
+      const next = prev.map((m) => (m.id === id ? { ...m, ...changes } : m));
+      void persistToCode(next, projects);
+      return next;
+    });
   };
 
   const deleteMember = (id: string) => {
-    setMembers((prev) => prev.filter((m) => m.id !== id));
+    setMembers((prev) => {
+      const next = prev.filter((m) => m.id !== id);
+      void persistToCode(next, projects);
+      return next;
+    });
   };
 
   const addProject = () => {
-    setProjects((prev) => [...prev, { id: crypto.randomUUID(), title: '', status: '', technologies: [] }]);
+    setProjects((prev) => {
+      const next = [
+        ...prev,
+        { id: crypto.randomUUID(), title: "", status: "", technologies: [], moreLink: "", githubLink: "", description: "" },
+      ];
+      void persistToCode(members, next);
+      return next;
+    });
   };
 
   const updateProject = (id: string, changes: Partial<Project>) => {
-    setProjects((prev) => prev.map((p) => (p.id === id ? { ...p, ...changes } : p)));
+    setProjects((prev) => {
+      const next = prev.map((p) => (p.id === id ? { ...p, ...changes } : p));
+      void persistToCode(members, next);
+      return next;
+    });
   };
 
   const deleteProject = (id: string) => {
-    setProjects((prev) => prev.filter((p) => p.id !== id));
+    setProjects((prev) => {
+      const next = prev.filter((p) => p.id !== id);
+      void persistToCode(members, next);
+      return next;
+    });
   };
 
   return (
@@ -157,6 +133,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       value={{
         members,
         projects,
+        saveStatus,
         addMember,
         updateMember,
         deleteMember,
@@ -173,7 +150,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 export const useAdmin = (): AdminContextType => {
   const ctx = useContext(AdminContext);
   if (!ctx) {
-    throw new Error('useAdmin must be used within an AdminProvider');
+    throw new Error("useAdmin must be used within an AdminProvider");
   }
   return ctx;
 };

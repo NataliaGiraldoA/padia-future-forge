@@ -1,0 +1,289 @@
+{
+  "members": [
+    {
+      "id": "leader-giovanny",
+      "name": "Giovanny Hidalgo Suarez",
+      "role": "Director",
+      "linkedin": "https://www.linkedin.com/in/giovanny-hidalgo-suarez-95711b1a5/",
+      "photo": "/leaders/giovanny.jpg?v=3",
+      "description": "Docente e investigador. Dirige la estrategia científica, las líneas de investigación y las alianzas académicas del semillero PADIA en la USB Cali."
+    },
+    {
+      "id": "leader-mariana",
+      "name": "Mariana Cruz",
+      "role": "Lider célula 1",
+      "linkedin": "https://www.linkedin.com/in/mariana-cruz-53a8531b0/",
+      "photo": "/leaders/mariana.jpg?v=3",
+      "description": "Coordina los proyectos de programación, analítica e inteligencia artificial de la Célula 1, acompañando la formación técnica de los investigadores."
+    },
+    {
+      "id": "leader-sofia",
+      "name": "Sofia Valencia",
+      "role": "Lider célula 2",
+      "linkedin": "https://www.linkedin.com/in/sofia-valencia-solano-66022a345/",
+      "photo": "/leaders/sofia.jpg?v=3",
+      "description": "Lidera el desarrollo de prototipos, participación en hackathons y mentoría colaborativa de los integrantes de la Célula 2."
+    },
+    {
+      "id": "leader-karly",
+      "name": "Karly Velasquez",
+      "role": "Lider célula Medellín",
+      "photo": "/leaders/karly.jpg?v=3",
+      "description": "Articula la extensión e investigación colaborativa del semillero desde la célula Medellín en proyectos de ciencia de datos e IA."
+    },
+    {
+      "id": "member-lilian",
+      "name": "Lilian Estefania Maradiago Correa",
+      "linkedin": "https://www.linkedin.com/in/lilian-estefania-maradiago-correa-40b423244/",
+      "photo": "/members/lilian.jpg?v=1"
+    },
+    {
+      "id": "member-valeria-rudas",
+      "name": "Valeria Rudas Ruiz",
+      "linkedin": "https://www.linkedin.com/in/valeria-rudas-ruiz-941a0715b/",
+      "photo": "/members/valeria-rudas.jpg?v=1"
+    },
+    {
+      "id": "member-juan-sebastian",
+      "name": "Juan Sebastián Dosman Bastidas",
+      "linkedin": "https://www.linkedin.com/in/sebastiandosman/",
+      "photo": "/members/juan-sebastian-dosman.jpg?v=1"
+    },
+    {
+      "id": "member-gustavo",
+      "name": "Gustavo Adolfo Camargo Pineda",
+      "linkedin": "https://www.linkedin.com/in/gustavoadolfocamargopineda/",
+      "photo": "/members/gustavo-camargo.jpg?v=1"
+    },
+    {
+      "id": "member-dillan",
+      "name": "Dillan Alexander Asprilla Sánchez",
+      "linkedin": "https://www.linkedin.com/in/dillanasprilla/",
+      "photo": "/members/dillan-asprilla.jpg?v=1"
+    },
+    {
+      "id": "member-carlos",
+      "name": "Carlos Andrés Serrato Echeverry",
+      "linkedin": "https://www.linkedin.com/in/carlos-andres-serrato-echeverry/",
+      "photo": "/members/carlos-serrato.jpg?v=1"
+    },
+    {
+      "id": "member-nicolas-dlp",
+      "name": "Nicolas De La Pava",
+      "linkedin": "https://www.linkedin.com/in/nicolasdlp/",
+      "photo": "/members/nicolas-delapava.jpg?v=1"
+    },
+    {
+      "id": "member-juan-david",
+      "name": "Juan David Díaz Cerón",
+      "linkedin": "https://www.linkedin.com/in/juan-david-díaz-cerón-272416265/",
+      "photo": "/members/juan-david-diaz.jpg?v=1"
+    },
+    {
+      "id": "member-jhonatan",
+      "name": "Jhonatan Andrés Ortega Caicedo"
+    },
+    {
+      "id": "member-valerie",
+      "name": "Valerie Sofia Olave Pineda",
+      "linkedin": "https://www.linkedin.com/in/valerie-olave-3a1929350/",
+      "photo": "/members/valerie-olave.jpg?v=1"
+    },
+    {
+      "id": "member-natalia",
+      "name": "Natalia Giraldo Amador",
+      "linkedin": "https://www.linkedin.com/in/natalia-giraldo-432076256/",
+      "photo": "/members/natalia-giraldo.jpg?v=1"
+    },
+    {
+      "id": "member-sofia-moreno",
+      "name": "Sofia Moreno Quintero",
+      "linkedin": "https://www.linkedin.com/in/sofia-moreno-3a3249272/",
+      "photo": "/members/sofia-moreno.jpg?v=1"
+    },
+    {
+      "id": "member-juan-pablo",
+      "name": "Juan Pablo Bustamante Bermúdez",
+      "linkedin": "https://www.linkedin.com/in/jpbustamanteb/",
+      "photo": "/members/juan-pablo-bustamante.jpg?v=1"
+    },
+    {
+      "id": "member-kevin",
+      "name": "Kevin Alexis López Camacho",
+      "linkedin": "https://www.linkedin.com/in/kevin-lópez-7a19b8369/",
+      "photo": "/members/kevin-lopez.jpg?v=1"
+    },
+    {
+      "id": "member-bylen",
+      "name": "Bylen Yesid Naspiran Realpe",
+      "linkedin": "https://www.linkedin.com/in/bylenyesidnaspiranrealpe/",
+      "photo": "/members/bylen-naspiran.jpg?v=1"
+    },
+    {
+      "id": "member-maria-jose",
+      "name": "Maria José Ramirez Montero",
+      "linkedin": "https://www.linkedin.com/in/maria-jose-ramirez-montero-8b45052b3/"
+    },
+    {
+      "id": "member-nicolas-hernandez",
+      "name": "Nicolas Hernandez Rodriguez"
+    },
+    {
+      "id": "member-samuel-vargas",
+      "name": "Samuel Vargas Valderruten"
+    },
+    {
+      "id": "member-fernanda",
+      "name": "Fernanda Elizabeth Muñoz Cháves"
+    },
+    {
+      "id": "member-valeria-becerra",
+      "name": "Valeria Becerra Rendón"
+    },
+    {
+      "id": "member-samuel-mejia",
+      "name": "Samuel Mejia Chavarriaga"
+    },
+    {
+      "id": "member-sofia-acosta",
+      "name": "Sofía Acosta Escobar"
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-ritmo",
+      "title": "Ritmo",
+      "status": "En desarrollo",
+      "technologies": ["Python", "TensorFlow", "Pandas"],
+      "moreLink": "https://lidis.usbcali.edu.co/ritmo",
+      "githubLink": "https://github.com/Karlyvelasquez/Ritmo",
+      "description": "Modelo de machine learning para predicción de deserción estudiantil utilizando técnicas avanzadas de IA."
+    },
+    {
+      "id": "proj-chatbot",
+      "title": "Chatbot Universitario",
+      "status": "En desarrollo",
+      "technologies": ["Python", "NLP", "FastAPI"],
+      "moreLink": "https://web.telegram.org/a/#8536656362",
+      "githubLink": "",
+      "description": "Asistente virtual con procesamiento de lenguaje natural para consultas académicas."
+    },
+    {
+      "id": "proj-varime",
+      "title": "Varime",
+      "status": "Tesis",
+      "technologies": ["Python", "React", "TensorFlow"],
+      "moreLink": "https://lidis.usbcali.edu.co/varime/",
+      "githubLink": "",
+      "description": "Herramienta de análisis variacional de señales e imágenes mediante modelos de deep learning, orientada a aplicaciones clínicas y científicas."
+    },
+    {
+      "id": "proj-trainecg",
+      "title": "TrainECG",
+      "status": "Tesis",
+      "technologies": ["Python", "React", "TensorFlow"],
+      "moreLink": "https://lidis.usbcali.edu.co/trainECG",
+      "githubLink": "",
+      "description": "Plataforma de entrenamiento de modelos de IA para la clasificación y análisis de señales electrocardiográficas (ECG)."
+    },
+    {
+      "id": "proj-algoritmo",
+      "title": "Algoritmo",
+      "status": "Actividad",
+      "technologies": ["Python", "React"],
+      "moreLink": "https://lidis.usbcali.edu.co/algoritmo/",
+      "githubLink": "",
+      "description": "Visualizador interactivo de algoritmos de ordenamiento y búsqueda con animaciones paso a paso para facilitar el aprendizaje."
+    },
+    {
+      "id": "proj-cartas",
+      "title": "Cartas",
+      "status": "Actividad",
+      "technologies": ["React", "JavaScript"],
+      "moreLink": "https://lidis.usbcali.edu.co/cartas",
+      "githubLink": "",
+      "description": "Aplicación de cartas educativas interactivas para el aprendizaje de conceptos de programación e inteligencia artificial."
+    },
+    {
+      "id": "proj-neuro",
+      "title": "Neuro",
+      "status": "Tesis",
+      "technologies": ["Python", "React", "TensorFlow"],
+      "moreLink": "https://lidis.usbcali.edu.co/neuro/",
+      "githubLink": "",
+      "description": "Plataforma de visualización y entrenamiento de redes neuronales artificiales con interfaz gráfica interactiva."
+    },
+    {
+      "id": "proj-inginious",
+      "title": "Inginious",
+      "status": "Hackaton",
+      "technologies": ["Python", "Docker"],
+      "moreLink": "https://inginious.usbcali.edu.co/login?next=/",
+      "githubLink": "",
+      "description": "Plataforma de evaluación automática de código para actividades de programación competitiva y retos académicos."
+    },
+    {
+      "id": "proj-trivia-ia",
+      "title": "Trivia IA",
+      "status": "Taller",
+      "technologies": ["React", "JavaScript"],
+      "moreLink": "https://iagame.onrender.com/",
+      "githubLink": "",
+      "description": "Juego de trivia interactivo sobre inteligencia artificial y tecnología, desarrollado como actividad de divulgación científica."
+    },
+    {
+      "id": "proj-uptc-ecoenergy",
+      "title": "UPTC EcoEnergy",
+      "status": "Hackaton",
+      "technologies": ["Python", "React"],
+      "moreLink": "https://lidis.usbcali.edu.co/hackathon-ia/",
+      "githubLink": "",
+      "description": "Solución de IA para la optimización del consumo energético, desarrollada en el hackathon de inteligencia artificial."
+    },
+    {
+      "id": "proj-oculus",
+      "title": "Oculus",
+      "status": "Hackaton",
+      "technologies": ["Python", "React"],
+      "moreLink": "https://bogotahackcolombia5-0.onrender.com/",
+      "githubLink": "",
+      "description": "Proyecto de visión artificial e inteligencia artificial desarrollado en el Bogotá Hack Colombia 5.0."
+    },
+    {
+      "id": "proj-jouvex",
+      "title": "Jouvex",
+      "status": "Verano científico",
+      "technologies": ["Python", "React", "scikit-learn"],
+      "moreLink": "https://stressacademy.onrender.com/",
+      "githubLink": "",
+      "description": "Aplicación de detección y análisis del estrés académico mediante machine learning, desarrollada en el verano científico."
+    },
+    {
+      "id": "proj-laida",
+      "title": "LAIDA",
+      "status": "Tesis",
+      "technologies": ["Python", "React", "TensorFlow"],
+      "moreLink": "https://lidis.usbcali.edu.co/laida/",
+      "githubLink": "",
+      "description": "Plataforma inteligente de gestión de leads para PyMEs, diseñada para capturar, organizar y convertir oportunidades de negocio mediante automatización, analítica y CRM inteligente."
+    },
+    {
+      "id": "proj-maze-rl",
+      "title": "Maze RL: Q-Learning vs SARSA",
+      "status": "",
+      "technologies": ["Python", "React"],
+      "moreLink": "https://agent-59fd.onrender.com/",
+      "githubLink": "",
+      "description": "Visualización comparativa de algoritmos de aprendizaje por refuerzo (Q-Learning vs SARSA) en un entorno de laberinto interactivo."
+    },
+    {
+      "id": "proj-visionlung",
+      "title": "VisionLung",
+      "status": "Tesis",
+      "technologies": ["Python", "React", "TensorFlow"],
+      "moreLink": "http://104.225.223.220:9008/",
+      "githubLink": "",
+      "description": "Aplicación inteligente de apoyo radiológico para la detección y análisis de neumonía mediante inteligencia artificial en radiografías de tórax."
+    }
+  ]
+}

@@ -9,10 +9,8 @@ WORKDIR /app
 # Copy package.json and lock files first (keeps install layer cacheable)
 COPY package.json bun.lockb ./
 
-# Install dependencies using BuildKit cache and prefer reproducible install
-# - Try `npm ci` for reproducible installs, fall back to `npm install` or `bun install`.
-RUN --mount=type=cache,target=/root/.npm \
-	sh -c "npm ci --prefer-offline --no-audit --progress=false || npm install --frozen-lockfile || bun install"
+# Install dependencies (compatible with classic Docker builder without --mount)
+RUN sh -c "npm ci --prefer-offline --no-audit --progress=false || npm install --frozen-lockfile || bun install"
 
 # Copy source code
 COPY . .
