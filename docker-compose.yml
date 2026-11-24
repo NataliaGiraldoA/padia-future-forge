@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3002:80"
+      - "3019:80"
     # production image serves built static files via nginx
     restart: unless-stopped
     environment:

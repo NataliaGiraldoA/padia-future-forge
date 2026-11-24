@@ -11,9 +11,12 @@ import { AdminProvider } from "./contexts/AdminContext";
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Router basename — set to root when the app is served at '/'
-  const BASENAME = '/';
-  console.debug('router basename =', BASENAME);
+  // Detecta automáticamente si la app está montada bajo /padia (servidor USB) o en / (local)
+  const BASENAME =
+    typeof window !== "undefined" && window.location.pathname.startsWith("/padia")
+      ? "/padia"
+      : "/";
+  console.debug("router basename =", BASENAME);
 
   return (
     <QueryClientProvider client={queryClient}>

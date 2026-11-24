@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowUpRight, Camera, ChevronLeft, ChevronRight, HeartHandshake, Rocket, Trophy, Users } from 'lucide-react';
+import { resolveAssetUrl } from '@/lib/site';
 import { SectionHeading } from './SectionHeading';
 import { CardPattern } from './Illustrations';
 
@@ -282,7 +283,7 @@ export const ActivitiesSection = () => {
                           <div className="relative h-52 w-full overflow-hidden md:h-full">
                             <img
                               key={activePhoto.src}
-                              src={activePhoto.src}
+                              src={resolveAssetUrl(activePhoto.src)}
                               alt={`${title} - ${activePhoto.caption}`}
                               className="h-full w-full object-cover object-center contrast-[1.03] saturate-[0.9] transition-all duration-700 group-hover:scale-[1.03] group-hover:saturate-100"
                             />

@@ -1,6 +1,6 @@
 import { Linkedin } from 'lucide-react';
 import { useAdmin, type Member } from '@/contexts/AdminContext';
-import { getInitials } from '@/lib/site';
+import { getInitials, resolveAssetUrl } from '@/lib/site';
 import { SectionHeading } from './SectionHeading';
 import { SpotlightCard } from './SpotlightCard';
 
@@ -20,7 +20,7 @@ const LeaderCard = ({ member, index }: { member: Member; index: number }) => (
       <div className="relative h-44 w-44 shrink-0 overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-[0_6px_18px_-6px_rgba(15,23,42,0.12)]">
         {member.photo ? (
           <img
-            src={member.photo}
+            src={resolveAssetUrl(member.photo)}
             alt={member.name}
             className="block h-44 w-44 max-h-44 max-w-44 bg-white object-cover object-top transition-transform duration-500 group-hover:scale-105"
           />
@@ -88,7 +88,7 @@ const ResearcherRow = ({ member }: { member: Member }) => {
       <span className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200/90 bg-[#F3F3F1] ring-2 ring-transparent transition-all duration-200 group-hover:border-padia-orange group-hover:ring-orange-500/25 group-hover:shadow-[0_0_16px_rgba(255,107,0,0.3)]">
         {member.photo ? (
           <img
-            src={member.photo}
+            src={resolveAssetUrl(member.photo)}
             alt={member.name}
             className="h-full w-full bg-white object-cover object-top"
           />
@@ -133,7 +133,7 @@ const ResearcherRow = ({ member }: { member: Member }) => {
           <div className="relative h-44 w-full overflow-hidden rounded-xl border border-slate-200/80 bg-[#F3F3F1]">
             {member.photo ? (
               <img
-                src={member.photo}
+                src={resolveAssetUrl(member.photo)}
                 alt=""
                 className="h-full w-full bg-white object-cover object-top"
               />

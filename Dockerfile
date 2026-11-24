@@ -21,8 +21,9 @@ RUN npm run build
 # Use nginx for serving static files
 FROM nginx:1.25-alpine AS production
 
-# Copy built files from build stage into web root to serve at /
+# Copy built files from build stage into both / and /padia so reverse proxy works with or without prefix stripping
 COPY --from=base /app/dist /usr/share/nginx/html
+COPY --from=base /app/dist /usr/share/nginx/html/padia
 
 # Copy custom nginx config for SPA rewrite
 COPY nginx.conf /etc/nginx/conf.d/default.conf

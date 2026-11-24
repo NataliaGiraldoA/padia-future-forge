@@ -84,7 +84,7 @@ function padiaCodePersistencePlugin(): Plugin {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/',
+  base: mode === 'production' ? (process.env.BASE_URL || '/padia/') : '/',
   server: {
     allowedHosts: ['lidis.usbcali.edu.co', '.lidis.usbcali.edu.co'],
     host: "::",
